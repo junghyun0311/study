@@ -66,28 +66,14 @@ function ExamplesNavbar() {
             </DropdownToggle>
             <DropdownMenu aria-labelledby="navbarDropdown">
               <DropdownItem header tag="a">
-                Dropdown header
+                메뉴1
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
-                Action
-              </DropdownItem>
-              <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
-                Another action
-              </DropdownItem>
-              <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
-                Something else here
-              </DropdownItem>
-              <DropdownItem divider></DropdownItem>
-              <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
-                Separated link
-              </DropdownItem>
-              <DropdownItem divider></DropdownItem>
-              <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
-                One more separated link
+                메뉴2
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
-          <div className="navbar-translate">
+          {/* <div className="navbar-translate">
             <NavbarBrand
               href="https://demos.creative-tim.com/now-ui-kit-react/index?ref=nukr-examples-navbar"
               target="_blank"
@@ -111,7 +97,7 @@ function ExamplesNavbar() {
               <span className="navbar-toggler-bar middle-bar"></span>
               <span className="navbar-toggler-bar bottom-bar"></span>
             </button>
-          </div>
+          </div> */}
           <Collapse
             className="justify-content-end"
             isOpen={collapseOpen}
