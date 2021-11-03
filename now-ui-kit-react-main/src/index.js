@@ -62,7 +62,7 @@ ReactDOM.render(
           render={(props) => <LoginPage {...props} />}
         />
         <Redirect to="/landing-page" />
-        <Redirect from="/" to="/landing-page" />
+        <Redirect from="/landing-page" to="/landing-page" />
       </Switch>
     </Switch>
   </BrowserRouter>,
