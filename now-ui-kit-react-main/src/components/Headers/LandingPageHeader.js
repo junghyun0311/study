@@ -34,8 +34,8 @@ function LandingPageHeader() {
         ></div>
         <div className="content-center">
           <Container>
-            <h1 className="title">This is our great company.</h1>
-            <div className="text-center">
+            <h1 className="title">Test</h1>
+            {/* <div className="text-center">
               <Button
                 className="btn-icon btn-round"
                 color="info"
@@ -60,7 +60,7 @@ function LandingPageHeader() {
               >
                 <i className="fab fa-google-plus"></i>
               </Button>
-            </div>
+            </div> */}
           </Container>
         </div>
       </div>

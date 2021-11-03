@@ -13,7 +13,7 @@ function DefaultFooter() {
         <Container>
           <nav>
             <ul>
-              <li>
+              {/* <li>
                 <a
                   href="https://www.creative-tim.com?ref=nukr-default-footer"
                   target="_blank"
@@ -28,10 +28,10 @@ function DefaultFooter() {
                 >
                   About Us
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
-                  href="http://blog.creative-tim.com?ref=nukr-default-footer"
+                  href="http://naver.com"
                   target="_blank"
                 >
                   Blog
@@ -40,21 +40,13 @@ function DefaultFooter() {
             </ul>
           </nav>
           <div className="copyright" id="copyright">
-            © {new Date().getFullYear()}, Designed by{" "}
-            <a
-              href="https://www.invisionapp.com?ref=nukr-default-footer"
-              target="_blank"
-            >
-              Invision
-            </a>
-            . Coded by{" "}
-            <a
+            © {new Date().getFullYear()}, 개발 진행중 
+            {/* <a
               href="https://www.creative-tim.com?ref=nukr-default-footer"
               target="_blank"
-            >
-              Creative Tim
-            </a>
-            .
+            > */}
+               -Junghyun
+            {/* </a> */}
           </div>
         </Container>
       </footer>

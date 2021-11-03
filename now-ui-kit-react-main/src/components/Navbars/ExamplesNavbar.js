@@ -40,7 +40,7 @@ function ExamplesNavbar() {
   });
   return (
     <>
-      {collapseOpen ? (
+      {/* {collapseOpen ? (
         <div
           id="bodyClick"
           onClick={() => {
@@ -48,7 +48,7 @@ function ExamplesNavbar() {
             setCollapseOpen(false);
           }}
         />
-      ) : null}
+      ) : null} */}
       <Navbar className={"fixed-top " + navbarColor} color="info" expand="lg">
         <Container>
           <UncontrolledDropdown className="button-dropdown">
@@ -66,7 +66,7 @@ function ExamplesNavbar() {
             </DropdownToggle>
             <DropdownMenu aria-labelledby="navbarDropdown">
               <DropdownItem header tag="a">
-                메뉴1
+                블로그
               </DropdownItem>
               <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
                 메뉴2
@@ -98,7 +98,7 @@ function ExamplesNavbar() {
               <span className="navbar-toggler-bar bottom-bar"></span>
             </button>
           </div> */}
-          <Collapse
+          {/* <Collapse
             className="justify-content-end"
             isOpen={collapseOpen}
             navbar
@@ -154,7 +154,7 @@ function ExamplesNavbar() {
                 </UncontrolledTooltip>
               </NavItem>
             </Nav>
-          </Collapse>
+          </Collapse> */}
         </Container>
       </Navbar>
     </>
