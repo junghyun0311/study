@@ -19,6 +19,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
+//로그인 체크
+import PrivateRoute from 'components/Custom/PrivateRoute';
 // styles for this kit
 import "assets/css/bootstrap.min.css";
 import "assets/scss/now-ui-kit.scss?v=1.5.0";
@@ -40,10 +42,17 @@ ReactDOM.render(
           path="/nucleo-icons"
           render={(props) => <NucleoIcons {...props} />}
         />
-        <Route
+        <PrivateRoute exact path="/landing-page" 
+                render={(props) =>  <LandingPage {...props} />} />
+        {/* <Route
           path="/landing-page"
+          render={(props) =>  localStorage.getItem('users')?(
+            <LandingPage {...props} />
+          ):(
+            <LoginPage {...props} />
+          )}
           render={(props) =>  <LandingPage {...props} />}
-        />
+        /> */}
         <Route
           path="/profile-page"
           render={(props) => <ProfilePage {...props} />}

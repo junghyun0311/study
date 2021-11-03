@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useHistory } from "react-router";
 // reactstrap components
 import {
   Button,
@@ -23,6 +23,16 @@ import TransparentFooter from "components/Footers/TransparentFooter.js";
 function LoginPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
+  let history = useHistory();
+  function guestlogin() {
+    alert('게스트 로그인');
+    localStorage.setItem("users", '게스트');
+    history.push("/");
+  }
+
+  
+
+
   React.useEffect(() => {
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
@@ -36,7 +46,7 @@ function LoginPage() {
   }, []);
   return (
     <>
-      <ExamplesNavbar />
+      {/* <ExamplesNavbar /> */}
       <div className="page-header clear-filter" filter-color="blue">
         <div
           className="page-header-image"
@@ -50,14 +60,14 @@ function LoginPage() {
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
                 <Form action="" className="form" method="">
-                  <CardHeader className="text-center">
+                  {/* <CardHeader className="text-center">
                     <div className="logo-container">
                       <img
                         alt="..."
                         src={require("assets/img/now-logo.png").default}
                       ></img>
                     </div>
-                  </CardHeader>
+                  </CardHeader> */}
                   <CardBody>
                     <InputGroup
                       className={
@@ -67,11 +77,11 @@ function LoginPage() {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="now-ui-icons users_circle-08"></i>
+                          <i className="now-ui-icons users_single-02"></i>
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="First Name..."
+                        placeholder="ID 입력"
                         type="text"
                         onFocus={() => setFirstFocus(true)}
                         onBlur={() => setFirstFocus(false)}
@@ -85,11 +95,11 @@ function LoginPage() {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="now-ui-icons text_caps-small"></i>
+                          <i className="now-ui-icons ui-1_lock-circle-open"></i>
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="Last Name..."
+                        placeholder="PW 입력"
                         type="text"
                         onFocus={() => setLastFocus(true)}
                         onBlur={() => setLastFocus(false)}
@@ -105,9 +115,19 @@ function LoginPage() {
                       onClick={(e) => e.preventDefault()}
                       size="lg"
                     >
-                      Get Started
+                      Login
                     </Button>
-                    <div className="pull-left">
+                    <Button
+                      block
+                      className="btn-round"
+                      color="info"
+                      href="#pablo"
+                      onClick={guestlogin}
+                      size="lg"
+                    >
+                      게스트접근
+                    </Button>
+                    {/* <div className="pull-left">
                       <h6>
                         <a
                           className="link"
@@ -128,14 +148,14 @@ function LoginPage() {
                           Need Help?
                         </a>
                       </h6>
-                    </div>
+                    </div> */}
                   </CardFooter>
                 </Form>
               </Card>
             </Col>
           </Container>
         </div>
-        <TransparentFooter />
+        {/* <TransparentFooter /> */}
       </div>
     </>
   );

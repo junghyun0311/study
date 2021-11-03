@@ -73,15 +73,15 @@ function ExamplesNavbar() {
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
-          {/* <div className="navbar-translate">
+          <div className="navbar-translate">
             <NavbarBrand
-              href="https://demos.creative-tim.com/now-ui-kit-react/index?ref=nukr-examples-navbar"
+              // href="https://demos.creative-tim.com/now-ui-kit-react/index?ref=nukr-examples-navbar"
               target="_blank"
               id="navbar-brand"
             >
-              Now Ui Kit
+              {localStorage.getItem('users')} 입장
             </NavbarBrand>
-            <UncontrolledTooltip target="#navbar-brand">
+            {/* <UncontrolledTooltip target="#navbar-brand">
               Designed by Invision. Coded by Creative Tim
             </UncontrolledTooltip>
             <button
@@ -96,8 +96,8 @@ function ExamplesNavbar() {
               <span className="navbar-toggler-bar top-bar"></span>
               <span className="navbar-toggler-bar middle-bar"></span>
               <span className="navbar-toggler-bar bottom-bar"></span>
-            </button>
-          </div> */}
+            </button> */}
+          </div>
           {/* <Collapse
             className="justify-content-end"
             isOpen={collapseOpen}
