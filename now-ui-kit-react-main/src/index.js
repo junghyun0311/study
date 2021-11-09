@@ -31,19 +31,25 @@ import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
+import LandingPage2 from "views/examples/LandingPage2.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-
+import SelectData from "views/examples/SelectData.js";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Switch>
         <Route path="/index" render={(props) => <Index {...props} />} />
         <Route
-          path="/nucleo-icons"
-          render={(props) => <NucleoIcons {...props} />}
+          path="/nucleo-icons" render={(props) => <NucleoIcons {...props} />}
         />
         <PrivateRoute exact path="/landing-page" 
-                render={(props) =>  <LandingPage {...props} />} />
+                component={LandingPage} />
+        <PrivateRoute exact path="/landing-page2" 
+                component={LandingPage2} />
+        <PrivateRoute exact path="/selectData" 
+                component={SelectData} />
+        {/* <PrivateRoute exact path="/landing-page" 
+                render={(props) =>  <LandingPage {...props} />} /> */}
         {/* <Route
           path="/landing-page"
           render={(props) =>  localStorage.getItem('users')?(
@@ -52,6 +58,10 @@ ReactDOM.render(
             <LoginPage {...props} />
           )}
           render={(props) =>  <LandingPage {...props} />}
+        /> */}
+        {/* <Route
+          path="/landing-page"
+          render={(props) => <LandingPage {...props} />}
         /> */}
         <Route
           path="/profile-page"

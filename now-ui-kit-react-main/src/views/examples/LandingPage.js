@@ -20,6 +20,7 @@ import DefaultFooter from "components/Footers/DefaultFooter.js";
 function LandingPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
+
   React.useEffect(() => {
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
@@ -35,7 +36,7 @@ function LandingPage() {
     <>
       <ExamplesNavbar />
       <div className="wrapper">
-        <LandingPageHeader />
+        <LandingPageHeader pageName="블로그" />
         <div className="section section-nucleo-icons">
         <Container>
           <Row>

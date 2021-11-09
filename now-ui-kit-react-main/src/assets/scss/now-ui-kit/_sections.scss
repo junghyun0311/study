@@ -37,6 +37,11 @@
       max-height: 440px;
   }
 
+  &.page-header-small2{
+    min-height: 20vh;
+    //max-height: 440px;
+}
+
   &:before{
       background-color: rgba(0,0,0,.3);
   }

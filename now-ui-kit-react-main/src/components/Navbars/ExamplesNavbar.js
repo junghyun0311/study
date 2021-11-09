@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 // reactstrap components
 import {
   Collapse,
@@ -19,6 +19,7 @@ import {
 function ExamplesNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
+
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
@@ -38,6 +39,7 @@ function ExamplesNavbar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+
   return (
     <>
       {/* {collapseOpen ? (
@@ -65,10 +67,10 @@ function ExamplesNavbar() {
               <span className="button-bar"></span>
             </DropdownToggle>
             <DropdownMenu aria-labelledby="navbarDropdown">
-              <DropdownItem header tag="a">
+            <DropdownItem  href="/landing-page"  >
                 블로그
               </DropdownItem>
-              <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
+              <DropdownItem  href="/landing-page2"  >
                 메뉴2
               </DropdownItem>
             </DropdownMenu>

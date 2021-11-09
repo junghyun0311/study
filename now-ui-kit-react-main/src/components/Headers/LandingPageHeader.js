@@ -5,9 +5,9 @@ import { Button, Container } from "reactstrap";
 
 // core components
 
-function LandingPageHeader() {
+function LandingPageHeader(props) {
   let pageHeader = React.createRef();
-
+  //console.log(props);
   React.useEffect(() => {
     if (window.innerWidth > 991) {
       const updateScroll = () => {
@@ -34,7 +34,7 @@ function LandingPageHeader() {
         ></div>
         <div className="content-center">
           <Container>
-            <h1 className="title">Test</h1>
+            <h1 className="title">{props.pageName}</h1>
             {/* <div className="text-center">
               <Button
                 className="btn-icon btn-round"

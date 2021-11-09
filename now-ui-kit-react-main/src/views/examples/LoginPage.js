@@ -30,9 +30,6 @@ function LoginPage() {
     history.push("/");
   }
 
-  
-
-
   React.useEffect(() => {
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
