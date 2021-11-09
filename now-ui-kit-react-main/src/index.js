@@ -42,12 +42,9 @@ ReactDOM.render(
         <Route
           path="/nucleo-icons" render={(props) => <NucleoIcons {...props} />}
         />
-        <PrivateRoute exact path="/landing-page" 
-                component={LandingPage} />
-        <PrivateRoute exact path="/landing-page2" 
-                component={LandingPage2} />
-        <PrivateRoute exact path="/selectData" 
-                component={SelectData} />
+        <PrivateRoute path="/landing-page" exact component={LandingPage} />
+        <PrivateRoute path="/landing-page2" exact component={LandingPage2} />
+        <PrivateRoute path="/selectData" exact component={SelectData} />
         {/* <PrivateRoute exact path="/landing-page" 
                 render={(props) =>  <LandingPage {...props} />} /> */}
         {/* <Route
