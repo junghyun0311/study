@@ -70,7 +70,7 @@ function ExamplesNavbar() {
             <DropdownItem  href="/landing-page"  >
                 블로그
               </DropdownItem>
-              <DropdownItem  href="/landing-page2"  >
+              <DropdownItem  href="/landing-page3"  >
                 메뉴2
               </DropdownItem>
             </DropdownMenu>

@@ -43,7 +43,7 @@ ReactDOM.render(
           path="/nucleo-icons" render={(props) => <NucleoIcons {...props} />}
         />
         <PrivateRoute path="/landing-page" exact component={LandingPage} />
-        <PrivateRoute path="/landing-page2" exact component={LandingPage2} />
+        <PrivateRoute path="/landing-page3" exact component={LandingPage2} />
         <PrivateRoute path="/selectData" exact component={SelectData} />
         {/* <PrivateRoute exact path="/landing-page" 
                 render={(props) =>  <LandingPage {...props} />} /> */}
@@ -69,7 +69,7 @@ ReactDOM.render(
           render={(props) => <LoginPage {...props} />}
         />
         <Redirect to="/landing-page" />
-        <Redirect from="/landing-page" to="/landing-page" />
+        <Redirect from="/landing-page" to="/landing-page" /> 
       </Switch>
     </Switch>
   </BrowserRouter>,
