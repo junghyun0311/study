@@ -5,7 +5,19 @@
 <mapper namespace="com.example.demo.Mapper.UserMapper">
    
     <select id="selectAllUsers" resultType="com.example.demo.VO.UserVO">
-        select member_info_seq,member_id from T_MEMBER_INFO 
+    	SELECT
+			user_seq,
+			user_id,
+			user_pwd,
+			user_token,
+			auth_code,
+			use_yn,
+			first_login_yn,
+			note,
+			crt_date,
+			upt_date
+		FROM
+			t_user_info
     </select>
     
 </mapper>
