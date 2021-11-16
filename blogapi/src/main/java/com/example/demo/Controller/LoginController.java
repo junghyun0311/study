@@ -7,12 +7,14 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,7 +23,7 @@ import com.example.demo.Service.TestService;
 import com.example.demo.Service.UserInfoService;
 import com.example.demo.VO.TestVO;
 
-//import kr.co.gshs.dt.admin.cmm.component.SessionUtil;
+import com.example.demo.Util.SessionUtil;
 //import kr.co.gshs.dt.admin.cmm.service.UserInfoService;
 //import kr.co.gshs.dt.admin.cmm.vo.UserVO;
 
@@ -32,7 +34,7 @@ public class LoginController {
 	
 	// @Autowired private UserInfoService userInfoService;
 
-	//@Autowired private KnsfEncUtil encUtil;
+	@Autowired private KnsfEncUtil encUtil;
 	 
 	//@Autowired private UserInfoService userInfoService;
 	
@@ -46,6 +48,22 @@ public class LoginController {
 		List<UserVO> testList = userInfoService.selectAllUsers();
 		int test = testList.size();
 		return "";
+	}
+	
+	
+	@RequestMapping(value = "/addUser.json", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String addUser(@RequestBody UserVO param, HttpServletRequest req, HttpServletResponse res, Model model)
+			throws Exception {
+		param.setUserPwd(encUtil.shaEncrypt(param.getUserPwd()));
+
+		UserVO sessionInfo = SessionUtil.getUserInfo();
+		//param.setCrtName(sessionInfo.getUserId());
+		//param.setUptName(sessionInfo.getUserId());
+		
+		 
+		//userInfoService.insertUser(param);
+		model.addAttribute("result", "Y");
+		return "jsonView";
 	}
 	/*List<UserVO> selectAllUsers()
 	 * @Value("#{gsadmConfig['cookie.domain.name']}") private String cookieDomainNm;

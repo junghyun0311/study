@@ -19,5 +19,9 @@
 		FROM
 			t_user_info
     </select>
-    
+    <insert id="insertUser" parameterType="com.example.demo.VO.UserVO">
+		/* kr.co.gshs.dt.admin.cmm.vo.insertUser */
+		INSERT INTO tb_user_info(user_id, user_pwd, auth_code, use_yn, note, crt_name, upt_name)
+		VALUES (#{userId}, #{userPwd}, #{authCode}, #{useYn}, #{note}, #{crtName}, #{uptName});
+	</insert>
 </mapper>
