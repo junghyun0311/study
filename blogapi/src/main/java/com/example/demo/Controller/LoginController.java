@@ -26,7 +26,6 @@ import com.example.demo.VO.TestVO;
 //import kr.co.gshs.dt.admin.cmm.vo.UserVO;
 
 import com.example.demo.VO.UserVO;
-import com.example.demo.Model.UserInfo;
 @Controller
 @RequestMapping(value = "/login")
 public class LoginController {
