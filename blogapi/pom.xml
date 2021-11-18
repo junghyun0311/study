@@ -68,6 +68,12 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- JSON 데이터 리턴 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		
 		<!-- <dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>

@@ -16,6 +16,18 @@ public class UserInfoService {
 	public List<UserVO> selectAllUsers() {
         return mapper.selectAllUsers();
     }
+	
+	public void insertUser(UserVO param) {
+		mapper.insertUser(param);
+	}
+	
+	public UserVO selectUserById(UserVO param) {
+		return mapper.selectUserById(param);
+	}
+	
+	public int updateUserToken(UserVO param) {
+		return mapper.updateUserToken(param);
+	}
 //	UserVO selectUserById(UserVO param);
 //	
 //	void insertUser(UserVO param);

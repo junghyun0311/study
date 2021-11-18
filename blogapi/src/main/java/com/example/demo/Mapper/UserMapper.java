@@ -12,4 +12,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserMapper {
 	List<UserVO> selectAllUsers();
+	void insertUser(UserVO param);
+	UserVO selectUserById(UserVO param);
+	int updateUserToken(UserVO param);
 }

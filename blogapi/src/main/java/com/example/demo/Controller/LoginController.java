@@ -1,6 +1,8 @@
 package com.example.demo.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.Security.KnsfEncUtil;
 import com.example.demo.Service.TestService;
@@ -51,19 +55,52 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping(value = "/addUser.json", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public String addUser(@RequestBody UserVO param, HttpServletRequest req, HttpServletResponse res, Model model)
+	@RequestMapping(value = "/addUser.json", produces="application/json;charset=UTF-8",method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public @ResponseBody Map<String, String> addUser(@RequestBody UserVO param, HttpServletRequest req, HttpServletResponse res, Model model)
 			throws Exception {
 		param.setUserPwd(encUtil.shaEncrypt(param.getUserPwd()));
 
-		UserVO sessionInfo = SessionUtil.getUserInfo();
+		//UserVO sessionInfo = SessionUtil.getUserInfo();
 		//param.setCrtName(sessionInfo.getUserId());
 		//param.setUptName(sessionInfo.getUserId());
 		
-		//test
-		//userInfoService.insertUser(param);
-		model.addAttribute("result", "Y");
-		return "jsonView";
+		Map<String, String> map = new HashMap<>();
+		try {
+			userInfoService.insertUser(param);
+			map.put("result", "Y");
+		}catch (Exception e) {
+			map.put("result", "N");
+		}
+		
+		return map;
+	}
+	
+	@RequestMapping(value = "/postLogin",method = RequestMethod.POST)
+	public @ResponseBody Map<String, String> postLogin(@RequestParam Map<String, String> map3, HttpServletRequest req, HttpServletResponse resp, @ModelAttribute UserVO param, Model model) throws Exception {
+		String info = encUtil.shaEncrypt(param.getUserPwd());    //패스워드 암호화
+		Map<String, String> map = new HashMap<>();
+		UserVO result = userInfoService.selectUserById(param);
+		
+		if(result == null || !result.getUserPwd().equals(info)) {
+			map.put("result", "N");
+			return map;
+		}else {
+			String uuid = UUID.randomUUID().toString().replaceAll("-", "");  //고유키생성
+			String encId = encUtil.aesEncrypt(result.getUserId());       //id 암호화
+			result.setUserToken(uuid);
+			userInfoService.updateUserToken(result);            //토큰 없데이트
+			SessionUtil.setAttribute("uInfo", result);     //request에 uInfo정보 설정
+			Cookie tokenCookie = new Cookie("uToken", uuid + encId);   //uuid id암호화 통합 토큰 발급
+		    tokenCookie.setDomain("testdemo");;     //도메인 세팅
+		    tokenCookie.setMaxAge(1200);    //쿠키 유지시간
+		    tokenCookie.setPath("/");	//쿠키 허용 경로
+		    
+			resp.addCookie(tokenCookie);       //쿠키 세팅
+
+			map.put("result", "Y");
+			map.put("userId", param.getUserId());
+		}
+		return map;
 	}
 	/*List<UserVO> selectAllUsers()
 	 * @Value("#{gsadmConfig['cookie.domain.name']}") private String cookieDomainNm;

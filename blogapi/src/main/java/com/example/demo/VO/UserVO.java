@@ -8,6 +8,7 @@ public class UserVO extends CommonVO {
 	private String authCode;
 	private String useYn;
 	private String firstLoginYn;
+	private String note;
 	private String url;
 	
 	/**
@@ -84,6 +85,14 @@ public class UserVO extends CommonVO {
 
 	public void setUseYn(String useYn) {
 		this.useYn = useYn;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 }
