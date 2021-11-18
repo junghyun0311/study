@@ -60,7 +60,7 @@ public class LoginController {
 		//param.setCrtName(sessionInfo.getUserId());
 		//param.setUptName(sessionInfo.getUserId());
 		
-		 
+		//test
 		//userInfoService.insertUser(param);
 		model.addAttribute("result", "Y");
 		return "jsonView";
