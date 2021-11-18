@@ -1,6 +1,7 @@
-import React from "react";
+import React,{useState} from "react";
 import { useHistory } from "react-router";
-// reactstrap components
+import { useDispatch } from 'react-redux'
+
 import {
   Button,
   Card,
@@ -19,11 +20,64 @@ import {
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
+import axios from "axios";
 
-function LoginPage() {
+function LoginPage(props) {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
   let history = useHistory();
+  
+  const [userId, setUserId] = useState('');
+  const [userPwd, setUserPwd] = useState('');
+
+  const onChangeId = (e) => {
+    // e.target에는 이벤트가 발생한 input DOM에 대한 정보를 가지고 있다.
+   // console.log(e.target);
+    // 이벤트가 발생한 DOM의 값 가져오기
+    //console.log(e.target.value);
+    setUserId(e.target.value);
+  }
+
+  const onChangePwd = (e) => {
+    // e.target에는 이벤트가 발생한 input DOM에 대한 정보를 가지고 있다.
+    //console.log(e.target);
+    // 이벤트가 발생한 DOM의 값 가져오기
+    //console.log(e.target.value);
+    setUserPwd(e.target.value);
+  }
+  //Login Api만들기
+  function userlogin(dataTosubmit) {
+    // 서버에서 받은 data를 request에 저장
+   
+    let form = new FormData();
+    form.append("userId", userId);
+    form.append("userPwd", userPwd);
+    console.log(form);
+    axios.post('/login/postLogin', form) .then(function (response) { console.log(response); })
+     .catch(error => { console.log('error : ',error.response) });
+    //return axios.post('login/postLogin',body);
+    // dispatch(loginUser(body))
+    //   		// 로그인되면 /(index페이지)로 이동
+    //         .then(response => {
+    //             if (response.payload.loginSuccess) {
+    //                 props.history.push('/')
+    //             } else {
+    //                 alert('Error')
+    //             }
+    //         })
+}
+
+  // function loginUser(body) {
+  //   // 서버에서 받은 data를 request에 저장
+  //   const request = axios.get('/login/postLogin', body)
+  //       .then(response => 
+  //           response.data);
+  //   return {
+  //       type: "LOGIN_USER",
+  //       payload: request
+  //   }
+  // }
+
   function guestlogin() {
     alert('게스트 로그인');
     localStorage.setItem("users", '게스트');
@@ -80,6 +134,7 @@ function LoginPage() {
                       <Input
                         placeholder="ID 입력"
                         type="text"
+                        onChange={onChangeId}
                         onFocus={() => setFirstFocus(true)}
                         onBlur={() => setFirstFocus(false)}
                       ></Input>
@@ -98,6 +153,7 @@ function LoginPage() {
                       <Input
                         placeholder="PW 입력"
                         type="text"
+                        onChange={onChangePwd}
                         onFocus={() => setLastFocus(true)}
                         onBlur={() => setLastFocus(false)}
                       ></Input>
@@ -109,7 +165,7 @@ function LoginPage() {
                       className="btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      onClick={userlogin}
                       size="lg"
                     >
                       Login
