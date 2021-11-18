@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Mapper.UserMapper">
+   
+    <select id="selectAllUsers" resultType="com.example.demo.VO.UserVO">
+    	SELECT
+			user_seq,
+			user_id,
+			user_pwd,
+			user_token,
+			auth_code,
+			use_yn,
+			first_login_yn,
+			note,
+			crt_date,
+			upt_date
+		FROM
+			t_user_info
+    </select>
+    <select id="selectUserById" resultType="com.example.demo.VO.UserVO" parameterType="com.example.demo.VO.UserVO">
+		SELECT
+			user_seq,
+			user_id,
+			user_pwd,
+			user_token,
+			auth_code,
+			use_yn,
+			first_login_yn,
+			note,
+			crt_date,
+			upt_date
+		FROM
+			t_user_info
+		WHERE
+			user_id = #{userId}
+			
+	</select>
+	<update id="updateUserToken" parameterType="com.example.demo.VO.UserVO">
+		UPDATE t_user_info
+		SET
+			user_token = #{userToken}
+		WHERE
+			user_id = #{userId}
+	</update>
+    <insert id="insertUser" parameterType="com.example.demo.VO.UserVO">
+		INSERT INTO t_user_info(user_id, user_pwd, auth_code, use_yn, note)
+		VALUES (#{userId}, #{userPwd}, #{authCode}, #{useYn}, #{note});
+	</insert>
+</mapper>
