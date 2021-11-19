@@ -52,9 +52,12 @@ function LoginPage(props) {
     let form = new FormData();
     form.append("userId", userId);
     form.append("userPwd", userPwd);
-    console.log(form);
-    axios.post('/login/postLogin', form) .then(function (response) { console.log(response); })
+
+    axios.post('/login/postLogin', form) .then(response => {  console.log(response.data)  })
      .catch(error => { console.log('error : ',error.response) });
+
+
+     
     //return axios.post('login/postLogin',body);
     // dispatch(loginUser(body))
     //   		// 로그인되면 /(index페이지)로 이동
