@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
 public class KnsfEncUtil {
 
 	
-	private String AES_INFO="test123";
-
+	private String AES_INFO="testdemoblog1234";
+	
 	/**
 	 * AES256 복호화 처리.
 	 * 
